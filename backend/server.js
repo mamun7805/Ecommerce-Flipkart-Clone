@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
 
+
 // routes
 const adminRoutes = require('./src/routes/admin/auth');
 const userRoutes = require('./src/routes/auth');
@@ -26,12 +27,11 @@ mongoose.connect(db_string, { useUnifiedTopology : true, useNewUrlParser : true,
     console.log("DB is connected")
 })
 
+
 app.use('/api/admin', adminRoutes);
 app.use("/api", userRoutes);
-
 
 
 app.listen(process.env.PORT, ()=> {
     console.log("Server is running...")
 })
-
