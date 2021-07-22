@@ -7,7 +7,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 // routes
-const userRouter = require('./src/routes/auth');
+const adminRoutes = require('./src/routes/admin/auth');
+const userRoutes = require('./src/routes/auth');
+
 
 //initialize environment variable
 env.config();
@@ -24,9 +26,8 @@ mongoose.connect(db_string, { useUnifiedTopology : true, useNewUrlParser : true,
     console.log("DB is connected")
 })
 
-
-app.use("/api", userRouter);
-
+app.use('/api/admin', adminRoutes);
+app.use("/api", userRoutes);
 
 
 
